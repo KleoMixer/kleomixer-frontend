@@ -1,0 +1,107 @@
+
+
+Contract MixToken (
+    symbol: ByteVec,
+    name: ByteVec,
+    decimals: U256,
+    supply: U256,
+    mut balance: U256,                           // remaining $MIX tokens left in contract
+    atloti: Address,
+    o: Address,
+    baek: Address
+) implements IFungibleToken {
+
+    event Withdraw(to: Address, amount: U256)
+    event Burn(amount: U256)
+
+    enum ErrorCodes {
+        InvalidCaller = 1
+    }
+
+    pub fn getTotalSupply() -> U256 {
+        return supply
+    }
+
+    pub fn getSymbol() -> ByteVec {
+        return symbol
+    }
+
+    pub fn getName() -> ByteVec {
+        return name
+    }
+
+    pub fn getDecimals() -> U256 {
+        return decimals
+    }
+
+    pub fn balance() -> U256 {
+        return balance
+    }
+
+    @using(assetsInContract = true, updateFields = true, checkExternalCaller = true)
+    pub fn withdrawdev(amount: U256) -> () {
+
+        emit Debug(`The current balance is ${balance}`)
+
+        checkCaller!(callerAddress!() == atloti, ErrorCodes.InvalidCaller)
+
+        transferTokenFromSelf!(atloti, selfTokenId!(), amount)
+
+        balance = balance - amount
+
+        emit Withdraw(atloti, amount)
+    }
+
+    @using(assetsInContract = true, updateFields = true, checkExternalCaller = true)
+    pub fn withdrawo(amount: U256) -> () {
+
+        emit Debug(`The current balance is ${balance}`)
+
+        checkCaller!(callerAddress!() == o, ErrorCodes.InvalidCaller)
+
+        transferTokenFromSelf!(o, selfTokenId!(), amount)
+
+        balance = balance - amount
+
+        emit Withdraw(o, amount)
+    }
+
+    @using(assetsInContract = true, updateFields = true, checkExternalCaller = true)
+    pub fn withdrawbaek(amount: U256) -> () {
+
+        emit Debug(`The current balance is ${balance}`)
+
+        checkCaller!(callerAddress!() == baek, ErrorCodes.InvalidCaller)
+
+        transferTokenFromSelf!(baek, selfTokenId!(), amount)
+
+        balance = balance - amount
+
+        emit Withdraw(baek, amount)
+    }
+
+    @using(assetsInContract = true, updateFields = true, checkExternalCaller = true)
+    pub fn burntokenincontract(amount: U256) -> () {
+
+        checkCaller!(callerAddress!() == atloti, ErrorCodes.InvalidCaller)
+
+        burnToken!(selfAddress!(), selfTokenId!(), amount)
+
+        balance = balance - amount
+
+        emit Burn(amount)
+    }
+
+    @using(assetsInContract = true, updateFields = true, checkExternalCaller = true)
+    pub fn stakemix(amount: U256) -> () {
+
+        checkCaller!(callerAddress!() == atloti, ErrorCodes.InvalidCaller)
+
+        burnToken!(selfAddress!(), selfTokenId!(), amount)
+
+        balance = balance - amount
+
+        emit Burn(amount)
+    }
+
+}
