@@ -14,6 +14,11 @@ export const SocialMediaIcons = () => {
         bgColor="#fff"
         style={{ width: 30, height: 30 }}
       />
+      <SocialIcon
+        url="https://github.com/KleoMixer/"
+        bgColor="#fff"
+        style={{ width: 30, height: 30 }}
+      />
     </Box>
   );
 };

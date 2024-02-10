@@ -14,7 +14,7 @@ import { theme } from '../config/chakraTheme';
 import { SWRConfig } from 'swr';
 import { useToast } from '@chakra-ui/react';
 import { AlephiumWalletProvider } from '@alephium/web3-react';
-import { tokenFaucetConfig } from '@/services/utils';
+import { mixicoconfig } from '@/services/utils';
 import { useCallback } from 'react';
 
 const toastId = 'kleomixer-error-toast';
@@ -40,7 +40,7 @@ const KleoMixerDapp = ({ Component, pageProps }: AppProps) => {
   return (
     <SWRConfig value={{ onError: handleErrorToast }}>
       <ChakraProvider theme={theme}>
-      <AlephiumWalletProvider theme="midnight" network={tokenFaucetConfig.network} addressGroup={tokenFaucetConfig.groupIndex}>
+      <AlephiumWalletProvider theme="midnight" network={mixicoconfig.network} addressGroup={mixicoconfig.groupIndex}>
         <Component {...pageProps} />
       </AlephiumWalletProvider>
       </ChakraProvider>

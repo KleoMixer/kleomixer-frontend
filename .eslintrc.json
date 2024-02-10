@@ -10,7 +10,7 @@
     "@typescript-eslint/require-await": "error",
     "no-var": "error",
     "react/no-unescaped-entities": "warn",
-    "react/react-in-jsx-scope": "warn",
+    "react/react-in-jsx-scope": "off",
     "react/prop-types": "off"
   },
   "parserOptions": {

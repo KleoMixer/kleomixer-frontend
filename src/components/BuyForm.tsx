@@ -20,7 +20,7 @@ import { AlephiumConnectButton } from '@alephium/web3-react'
 
 export const BuyForm = () => {
   const router = useRouter();
-  const [amount, setAmount] = useState(1);
+  const [amount, setAmount] = useState(80);
 
   const isContentCentered = useBreakpointValue({ base: true, md: false });
 
@@ -54,6 +54,7 @@ export const BuyForm = () => {
             py={6}
             _focus={{ outline: 'none' }}
             placeholder="Amount of tokens to Buy..."
+            color="KleoColor.white"
           />
             <NumberInputStepper>
               <NumberIncrementStepper borderColor="KleoColor.base.dark" />
@@ -84,6 +85,7 @@ export const BuyForm = () => {
           fontSize="lg"
           fontWeight="thin"
           textAlign={{ base: 'center', md: 'center' }}
+          color="KleoColor.white"
         >
         You will pay {amount*0.0125} $ALPH
         </Text>
@@ -93,6 +95,7 @@ export const BuyForm = () => {
           fontSize="lg"
           fontWeight="thin"
           textAlign={{ base: 'center', md: 'center' }}
+          color="KleoColor.white"
         >
         You will receive {amount*0.25} $MIX Unlocked and {amount*0.75} $MIX Locked
         </Text>
@@ -102,6 +105,7 @@ export const BuyForm = () => {
           fontSize="lg"
           fontWeight="thin"
           textAlign={{ base: 'center', md: 'center' }}
+          color="KleoColor.white"
         >
         <InfoOutlineIcon/>
         </Text>

@@ -2,8 +2,8 @@ import { useRouter } from 'next/router';
 import { Box, Button } from '@chakra-ui/react';
 import { useCallback, FC } from 'react';
 import { ActionButton } from './ActionButton';
+import { AlephiumConnectButton } from '@alephium/web3-react';
 import { SocialMediaIcons } from './SocialMediaIcons';
-import { AlephiumConnectButton } from '@alephium/web3-react'
 
 interface HeaderMenuButtonsProps {
   enabled: string[];
@@ -16,6 +16,10 @@ export const HeaderMenuButtons: FC<HeaderMenuButtonsProps> = ({ enabled }) => {
     router.push('/mixer');
   }, [router]);
 
+
+    const handleStakeClick = useCallback(() => {
+      router.push('/stake');
+    }, [router]);
 
     const handlePresaleClick = useCallback(() => {
       router.push('/presale');
@@ -40,10 +44,16 @@ export const HeaderMenuButtons: FC<HeaderMenuButtonsProps> = ({ enabled }) => {
       }}
     >
 
-      <SocialMediaIcons />
+    <SocialMediaIcons />
 
       {enabled.includes('presale') && (
         <ActionButton onClick={handlePresaleClick}>Pre-Sale</ActionButton>
+      )}
+      {enabled.includes('mixer') && (
+        <ActionButton onClick={handleMixerClick}>Mixer</ActionButton>
+      )}
+      {enabled.includes('stake') && (
+        <ActionButton disabled={true} onClick={handleStakeClick}>Stake</ActionButton>
       )}
       {enabled.includes('docs') && (
         <ActionButton onClick={handleDocsClick}>Docs</ActionButton>

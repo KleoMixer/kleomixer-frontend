@@ -11,3 +11,22 @@ import {
   SignerProvider,
   HexString,
 } from "@alephium/web3";
+import { default as AddmixScriptJson } from "../ico/Addmix.ral.json";
+import { default as BuymixScriptJson } from "../ico/Buymix.ral.json";
+import { default as DestroyMixScriptJson } from "../ico/DestroyMix.ral.json";
+import { default as WithdrawalphScriptJson } from "../ico/Withdrawalph.ral.json";
+
+export const Addmix = new ExecutableScript<{
+  contract: HexString;
+  amount: bigint;
+}>(Script.fromJson(AddmixScriptJson));
+export const Buymix = new ExecutableScript<{
+  contract: HexString;
+  amount: bigint;
+}>(Script.fromJson(BuymixScriptJson));
+export const DestroyMix = new ExecutableScript<{ contract: HexString }>(
+  Script.fromJson(DestroyMixScriptJson)
+);
+export const Withdrawalph = new ExecutableScript<{ contract: HexString }>(
+  Script.fromJson(WithdrawalphScriptJson)
+);

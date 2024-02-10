@@ -2,5 +2,5 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export * from "./MixToken";
+export * from "./Mixico";
 export * from "./scripts";

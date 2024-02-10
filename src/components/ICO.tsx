@@ -56,11 +56,28 @@ export const ICO = () => {
   >
 
         <HomeSectionTitle title="Pre-Sale" />
+
+        <Box
+        border={1}
+        borderRadius="2xl"
+        bgColor="KleoColor.dark.lighter"
+        boxShadow="0 0 25px"
+        color="KleoColor.shadowColor"
+        textAlign={{ base: 'center', md: 'center' }}
+        bgGradient="linear-gradient(90deg, KleoColor.dark.base 0%, KleoColor.dark.lighter 70%);"
+        mb={6}
+        >
+
+        <VStack
+      spacing={1}
+      textAlign={{ base: 'center', md: 'center' }}
+      >
       <Text
         as="h2"
         fontSize="lg"
         fontWeight="thin"
         textAlign={{ base: 'center', md: 'center' }}
+        color="KleoColor.white"
       >
       Buy your $MIX token to support us and to be able to mix your crypto!
       </Text>
@@ -69,6 +86,7 @@ export const ICO = () => {
         fontSize="lg"
         fontWeight="thin"
         textAlign={{ base: 'center', md: 'center' }}
+        color="KleoColor.white"
       >
       $MIX Price: 0.0125 ALPH
       </Text>
@@ -77,9 +95,14 @@ export const ICO = () => {
         fontSize="lg"
         fontWeight="thin"
         textAlign={{ base: 'center', md: 'center' }}
+        color="KleoColor.white"
       >
       $MIX Contract:{''}
       </Text>{''}
+      <VStack
+    spacing={3}
+    textAlign={{ base: 'center', md: 'center' }}
+    >
       <Text
         as="a"
         color="KleoColor.color3.base"
@@ -91,22 +114,22 @@ export const ICO = () => {
       </Text>{''}
       <ProgressBar completed={18000} maxCompleted={25000} customLabel={"Total tokens sold: "} animateOnRender={true} height="20px" width="500px" bgColor="#65e7a9" />
       <BuyForm/>
+      </VStack>
 
       <Text
         as="h2"
         fontSize="lg"
         fontWeight="thin"
         textAlign={{ base: 'center', md: 'center' }}
-        sx={{
-          a: {
-            color: 'KleoColor.color3.base',
-          },
-        }}
+        color="KleoColor.white"
       >
         Our pre-sale end in
       </Text>
 
       <Timer deadline="11 Mar 2024 19:00:00 GMT" />
+
+      </VStack>
+      </Box>
 
       <HomeSectionTitle title="Tokenomics" />
 

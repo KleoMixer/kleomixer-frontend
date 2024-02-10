@@ -1,5 +1,5 @@
 {
-  "fullNodeVersion": "v2.5.7",
+  "fullNodeVersion": "v2.5.9",
   "compilerOptionsUsed": {
     "ignoreUnusedConstantsWarnings": false,
     "ignoreUnusedVariablesWarnings": false,
@@ -9,18 +9,39 @@
     "ignoreCheckExternalCallerWarnings": false
   },
   "infos": {
-    "IFungibleToken": {
-      "sourceFile": "../../../.npm/_npx/f1b120e1b513c04c/node_modules/@alephium/web3/std/fungible_token_interface.ral",
-      "sourceCodeHash": "6809cb06fb20fa7edf529461998beeebd12b1636d439612cca2f84214dbf4a20",
+    "Addmix": {
+      "sourceFile": "ico/tx_addmix.ral",
+      "sourceCodeHash": "054218d3dd32b57fc1991ecba95d003682eb39db07711e883668d2061282b825",
       "bytecodeDebugPatch": "",
       "codeHashDebug": "",
       "warnings": []
     },
-    "MixToken": {
-      "sourceFile": "mixtoken.ral",
-      "sourceCodeHash": "dc1f280eead28b7bb43ae6592a0e6429d7de479665808f632bc21f721801a97c",
-      "bytecodeDebugPatch": "=20-4=1-1+9=2-1=1+5=2-2+e140fd=101+3a0007e02=1+75468652063757272656e742062616c616e63652069732000=61+3a0007e02=1+75468652063757272656e742062616c616e63652069732000=61+3a0007e02=1+75468652063757272656e742062616c616e63652069732000=106",
-      "codeHashDebug": "cb87ab92503bfe7e8d3a12d8d015de6cc614933954c47d9076cee8f418f06101",
+    "Buymix": {
+      "sourceFile": "ico/tx_buy.ral",
+      "sourceCodeHash": "bcfcdc93821a57de97180d575b95b30409dbaaa61567e688990ff941a18f452d",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "",
+      "warnings": []
+    },
+    "DestroyMix": {
+      "sourceFile": "ico/tx_destroymix.ral",
+      "sourceCodeHash": "c6a8da6f810fae82007d177885e941d930b28333fceb3c2dbc247ed59c9ae128",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "",
+      "warnings": []
+    },
+    "Mixico": {
+      "sourceFile": "ico/mixico.ral",
+      "sourceCodeHash": "260e55b9ef0706c08f45c35e096b4364002b5cb47a94f4783199fb048707353d",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "f7c346542ae53ec5de4dbcf07fabf7b18c45f163c4df35ecb823cb79b9fc60b7",
+      "warnings": []
+    },
+    "Withdrawalph": {
+      "sourceFile": "ico/tx_withdrawalph.ral",
+      "sourceCodeHash": "87df4a10396635f337bdc55bab0b7c61bc4cfbf11b7b6e6333479158ffda4616",
+      "bytecodeDebugPatch": "",
+      "codeHashDebug": "",
       "warnings": []
     }
   }

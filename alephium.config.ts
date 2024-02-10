@@ -1,6 +1,9 @@
 import { Configuration } from '@alephium/cli'
 import { Number256 } from '@alephium/web3'
 
+const dotenv = require('dotenv');
+dotenv.config()
+
 // Settings are usually for configuring
 export type Settings = {
   issueTokenAmount: Number256
@@ -19,13 +22,13 @@ const configuration: Configuration<Settings> = {
 
     testnet: {
       nodeUrl: process.env.NODE_URL as string ?? 'https://wallet-v20.testnet.alephium.org',
-      privateKeys: process.env.PRIVATE_KEYS === undefined ? [] : process.env.PRIVATE_KEYS.split(','),
+      privateKeys: process.env.key === undefined ? [] : process.env.key.split(','),
       settings: defaultSettings
     },
 
     mainnet: {
       nodeUrl: process.env.NODE_URL as string ?? 'https://wallet-v20.mainnet.alephium.org',
-      privateKeys: process.env.PRIVATE_KEYS === undefined ? [] : process.env.PRIVATE_KEYS.split(','),
+      privateKeys: process.env.prodkey === undefined ? [] : process.env.prodkey.split(','),
       settings: defaultSettings
     }
   }

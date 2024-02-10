@@ -9,7 +9,7 @@ const Mixer: NextPage = () => {
   return (
     <MainLayout>
       <HeaderMenu>
-        <HeaderMenuButtons enabled={['auth', 'presale', 'docs']} />
+        <HeaderMenuButtons enabled={['auth', 'presale', 'mixer', 'stake', 'docs']} />
       </HeaderMenu>
       <Box
         display="flex"

@@ -24,43 +24,17 @@ export const Mix = () => {
         lineHeight="shorter"
         mb={5}
       >
-        Try our crypto mixer now!
-      </Text>
-      <Text
-        as="h2"
-        fontSize="lg"
-        fontWeight="thin"
-        textAlign={{ base: 'center', md: 'center' }}
-        sx={{
-          a: {
-            color: 'KleoColor.color3.base',
-          },
-        }}
-      >
-      If you want to try the mixer you must have <a href="https://testnet.alephium.org/">ALPH</a> by requesting them on your wallet,
-      </Text>
-      <Text
-        as="h2"
-        fontSize="lg"
-        fontWeight="thin"
-        textAlign={{ base: 'center', md: 'center' }}
-        sx={{
-          a: {
-            color: 'KleoColor.color3.base',
-          },
-        }}
-      >
-      all the transactions currently made are done on <a href="https://testnet.alephium.org/">testnet</a> and cost you nothing.
+        Mixer not available for now
       </Text>
 
       <Alert width='auto' status='info'>
            <AlertIcon />
-               3% fees will be taken when you deposit any crypto
+               120 $MIX will be taken as fees when you deposit any crypto
       </Alert>
 
       <Alert width='auto' status='warning'>
            <AlertIcon />
-               you can read our <a href="https://docs.kleomixer.com/"> Docs</a> to understand how the mixer work
+               you can read our documentations to understand how the mixer work
       </Alert>
 
     </VStack>
@@ -99,11 +73,6 @@ export const Mix = () => {
                       color="KleoColor.white"
                       _hover={{ bg: 'KleoColor.color4.base' }}
                       _selected={{ bg: 'KleoColor.color4.darker' }}
-                      >Register</Tab>
-                      <Tab
-                      color="KleoColor.white"
-                      _hover={{ bg: 'KleoColor.color4.base' }}
-                      _selected={{ bg: 'KleoColor.color4.darker' }}
                       >Deposit</Tab>
                       <Tab
                       color="KleoColor.white"
@@ -112,9 +81,6 @@ export const Mix = () => {
                       >Withdraw</Tab>
                     </TabList>
                   <TabPanels>
-                    <TabPanel>
-                        <RegisterForm/>
-                    </TabPanel>
                     <TabPanel>
                       <SimpleGrid columns={{sm:2, md:2}} spacing='40px'>
                         <CryptoChooser/>

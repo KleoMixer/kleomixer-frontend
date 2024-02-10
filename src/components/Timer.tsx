@@ -26,11 +26,7 @@ export const Timer = ({ deadline = new Date().toString() }) => {
           fontSize="lg"
           fontWeight="thin"
           textAlign={{ base: 'center', md: 'center' }}
-          sx={{
-            a: {
-              color: 'KleoColor.color3.base',
-            },
-          }}
+          color="KleoColor.white"
         >
         {`${Math.floor(time/DAY)}`.padStart(2, "0")}:{`${Math.floor((time / HOUR) % 24)}`.padStart(2, "0")}:{`${Math.floor((time / MINUTE) % 60)}`.padStart(2, "0")}:{`${Math.floor((time / SECOND) % 60)}`.padStart(2, "0")}
         </Text>

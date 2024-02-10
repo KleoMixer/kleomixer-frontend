@@ -1,0 +1,10 @@
+TxScript Buymix (
+    contract: Mixico,
+    amount: U256
+) {
+    let tokenprice = contract.getPrice()
+
+    let purchase = tokenprice * amount
+
+    contract.buymix{callerAddress!() -> ALPH: purchase}(amount)
+}

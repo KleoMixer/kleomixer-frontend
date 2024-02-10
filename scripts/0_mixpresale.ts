@@ -1,6 +1,6 @@
 import { Deployer, DeployFunction, Network } from '@alephium/cli'
 import { Settings } from '../alephium.config'
-import { MixToken } from '../artifacts/ts'
+import { Mixico } from '../artifacts/ts'
 
 // This deploy function will be called by cli deployment tool automatically
 // Note that deployment scripts should prefixed with numbers (starting from 0)
@@ -10,19 +10,16 @@ const deployFaucet: DeployFunction<Settings> = async (
 ): Promise<void> => {
   // Get settings
   const issueTokenAmount = network.settings.issueTokenAmount
-  const result = await deployer.deployContract(MixToken, {
+  const result = await deployer.deployContract(Mixico, {
     // The amount of token to be issued
     issueTokenAmount: issueTokenAmount,
     // The initial states of the faucet contract
     initialFields: {
-      symbol: Buffer.from('TF', 'utf8').toString('hex'),
-      name: Buffer.from('TokenFaucet', 'utf8').toString('hex'),
-      decimals: 0n,
-      supply: 10000000n,
-      balance: 10000000n,
-      atloti: "1EgpiwGXZd7Mvq4MF8zWJVF436aBBkhFc8pv1Sxs2QjK2",
-      o: "",                                                      // fetch addresses
-      baek: ""                                                    // fetch addresses
+      tokenId: "4e0eb20afb173cd534ae29acd013861115482c1e3d8ed626294bbe1008a3f900", // MIX ID
+      balance: 0n,
+      alphbalance: 0n,
+      pricemix: 125000000n,                                                        // 0.0125 per $MIX
+      owner: "1EgpiwGXZd7Mvq4MF8zWJVF436aBBkhFc8pv1Sxs2QjK2"                       // who can withdraw alph
     }
   })
   console.log('Mix token contract id: ' + result.contractInstance.contractId)

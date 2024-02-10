@@ -8,12 +8,14 @@ export const Footer = () => {
       color="KleoColor.white"
       display="flex"
       alignItems="center"
+      textAlign="center"
     >
       <Container
         maxW="container.xl"
         fontSize="sm"
         fontWeight="normal"
         textAlign="center"
+        alignItems="center"
       >
         <Box>KleoMixer (v0.0.71)</Box>
 
