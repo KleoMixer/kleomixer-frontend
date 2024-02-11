@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { useRouter } from 'next/router';
 import { ActionButton } from './ActionButton';
 import {
@@ -16,17 +16,66 @@ import {
 } from '@chakra-ui/react';
 import { InfoOutlineIcon } from '@chakra-ui/icons'
 import { Authenticated } from './core/Authenticated';
-import { AlephiumConnectButton } from '@alephium/web3-react'
+import { useWallet, AlephiumConnectButton } from '@alephium/web3-react';
+import { TxStatus } from './TxStatus'
+import { Mixico } from 'artifacts/ts';
+import { node, web3, NodeProvider } from '@alephium/web3';
+import { MixIco } from '@/services/utils'
+import { buy, withdraw, topupmix, destroycontract } from '@/services/token.service'
+import { PatternFormat } from "react-number-format";
 
-export const BuyForm = () => {
-  const router = useRouter();
+
+export const BuyForm: FC<{
+  config: MixIco
+}> = ({ config }) => {
+  const { signer, account } = useWallet()
+  const addressGroup = config.groupIndex
   const [amount, setAmount] = useState(80);
+  const [ongoingTxId, setOngoingTxId] = useState<string>()
+
+  const handleBuySubmit = async () => {
+    if (signer) {
+      const result = await buy(signer, ""+amount*100000000, "yweuj67dNGcVu81BEXfdSs2yTDJ2gJBQPwkDbgksCUyD")
+      setOngoingTxId(result.txId)
+    }
+  }
+
+  const handleWithdrawSubmit = async () => {
+    if (signer) {
+      const result = await withdraw(signer, ""+amount*100000000, "yweuj67dNGcVu81BEXfdSs2yTDJ2gJBQPwkDbgksCUyD")
+      setOngoingTxId(result.txId)
+    }
+  }
+
+  const handleDestroySubmit = async () => {
+    if (signer) {
+      const result = await destroycontract(signer, ""+amount*100000000, "yweuj67dNGcVu81BEXfdSs2yTDJ2gJBQPwkDbgksCUyD")
+      setOngoingTxId(result.txId)
+    }
+  }
+
+  const handleTopUpSubmit = async () => {
+    if (signer) {
+      const result = await topupmix(signer, ""+amount*100000000)
+      setOngoingTxId(result.txId)
+    }
+  }
+
+  const txStatusCallback = useCallback(async (status: node.TxStatus, numberOfChecks: number): Promise<any> => {
+    if (
+      (status.type === 'Confirmed' && numberOfChecks > 2) ||
+      (status.type === 'TxNotFound' && numberOfChecks > 3)
+    ) {
+      setOngoingTxId(undefined)
+    }
+
+    return Promise.resolve()
+  }, [setOngoingTxId])
+
+
+  const router = useRouter();
 
   const isContentCentered = useBreakpointValue({ base: true, md: false });
-
-  const handleBuy = useCallback(() => {
-    router.push('/presale');
-  }, [router]);
 
   const setAmountHandler = useCallback(
     (valueAsString: string, valueAsNumber: number) => setAmount(valueAsNumber),
@@ -45,7 +94,7 @@ export const BuyForm = () => {
       <HStack>
         <NumberInput
           maxW="100px"
-          min={80}
+          min={1}
           max={80000}
           value={amount}
           onChange={setAmountHandler}
@@ -74,7 +123,7 @@ export const BuyForm = () => {
           spinnerCentered={isContentCentered}
         >
         <ActionButton
-          onClick={handleBuy}
+          onClick={handleBuySubmit}
         >
           {'Buy'}
         </ActionButton>
@@ -87,30 +136,8 @@ export const BuyForm = () => {
           textAlign={{ base: 'center', md: 'center' }}
           color="KleoColor.white"
         >
-        You will pay {amount*0.0125} $ALPH
+        You will pay {amount*0.0125} $ALPH and receive {amount} $MIX
         </Text>
-        <HStack>
-        <Text
-          as="h2"
-          fontSize="lg"
-          fontWeight="thin"
-          textAlign={{ base: 'center', md: 'center' }}
-          color="KleoColor.white"
-        >
-        You will receive {amount*0.25} $MIX Unlocked and {amount*0.75} $MIX Locked
-        </Text>
-        <Tooltip label="25% unlocked each 4 mounths">
-        <Text
-          as="h2"
-          fontSize="lg"
-          fontWeight="thin"
-          textAlign={{ base: 'center', md: 'center' }}
-          color="KleoColor.white"
-        >
-        <InfoOutlineIcon/>
-        </Text>
-        </Tooltip>
-        </HStack>
         </VStack>
       </Box>
     </>

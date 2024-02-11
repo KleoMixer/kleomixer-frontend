@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router';
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button, useBreakpointValue } from '@chakra-ui/react';
 import { useCallback, FC } from 'react';
 import { ActionButton } from './ActionButton';
+import { Authenticated } from './core/Authenticated';
 import { AlephiumConnectButton } from '@alephium/web3-react';
 import { SocialMediaIcons } from './SocialMediaIcons';
 
@@ -11,6 +12,8 @@ interface HeaderMenuButtonsProps {
 
 export const HeaderMenuButtons: FC<HeaderMenuButtonsProps> = ({ enabled }) => {
   const router = useRouter();
+
+  const isContentCentered = useBreakpointValue({ base: true, md: false });
 
   const handleMixerClick = useCallback(() => {
     router.push('/mixer');
@@ -58,7 +61,13 @@ export const HeaderMenuButtons: FC<HeaderMenuButtonsProps> = ({ enabled }) => {
       {enabled.includes('docs') && (
         <ActionButton onClick={handleDocsClick}>Docs</ActionButton>
       )}
-      {enabled.includes('auth') && <AlephiumConnectButton />}
+
+      <Authenticated
+        fallback={<AlephiumConnectButton />}
+        spinnerCentered={isContentCentered}
+      >
+      <AlephiumConnectButton />
+      </Authenticated>
     </Box>
   );
 };

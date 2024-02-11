@@ -1,4 +1,5 @@
 import { NetworkId } from "@alephium/web3";
+import { Mixico } from "artifacts/ts";
 import { loadDeployments } from "artifacts/ts/deployments";
 //import { loadDeployments } from "../../artifacts/ts/deployments"
 
@@ -20,10 +21,10 @@ function getNetwork(): NetworkId {
 function getMixIcoConfig(): MixIco {
   const network = getNetwork()
   const mixico = loadDeployments(network).contracts.Mixico.contractInstance
-  const groupIndex = 1 //tokenFaucet.groupIndex
+  const groupIndex = mixico.groupIndex
   const tokenMixIcoAddress = mixico.address //.address
   const MixIcoId = mixico.contractId //.contractId
-  const mixtoken = "84e8b52e59c04c8a563fcce9b4a040e6a682b8d9466c1e55ac9b8938bad87901"
+  const mixtoken = "4e0eb20afb173cd534ae29acd013861115482c1e3d8ed626294bbe1008a3f900"
   const price = "125000000"
   return { network, groupIndex, tokenMixIcoAddress, MixIcoId, mixtoken, price }
 }

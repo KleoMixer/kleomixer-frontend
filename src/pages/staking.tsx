@@ -5,7 +5,7 @@ import { HeaderMenu } from '../components/HeaderMenu';
 import { HeaderMenuButtons } from '../components/HeaderMenuButtons';
 import { ICO } from '../components/ICO';
 
-const Presale: NextPage = () => {
+const Staking: NextPage = () => {
   return (
     <MainLayout>
       <HeaderMenu>
@@ -16,10 +16,9 @@ const Presale: NextPage = () => {
         justifyContent="space-between"
         mt={{ base: 8, xl: 12, '2xl': 24 }}
       >
-        <ICO />
       </Box>
     </MainLayout>
   );
 };
 
-export default Presale;
+export default Staking;

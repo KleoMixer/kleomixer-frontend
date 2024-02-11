@@ -11,7 +11,10 @@ import { Timer } from './Timer';
 import { Chart } from "react-google-charts";
 import { HomeSectionTitle } from './HomeSectionTitle';
 import { BuyForm } from './BuyForm';
+import { FeesTab } from './FeesTab';
+import { TokenomicsTab } from './TokenomicsTab';
 import ProgressBar from "@ramonak/react-progress-bar";
+import { mixicoconfig } from '@/services/utils'
 
 export const Supplydata = [
   ["Allocation", "Percentage"],
@@ -112,8 +115,8 @@ export const ICO = () => {
       >
         yweuj67dNGcVu81BEXfdSs2yTDJ2gJBQPwkDbgksCUyD
       </Text>{''}
-      <ProgressBar completed={18000} maxCompleted={25000} customLabel={"Total tokens sold: "} animateOnRender={true} height="20px" width="500px" bgColor="#65e7a9" />
-      <BuyForm/>
+      <ProgressBar completed={0} maxCompleted={25000} customLabel={"Total tokens sold "} animateOnRender={true} height="20px" width="500px" bgColor="#65e7a9" />
+      <BuyForm config={mixicoconfig} />
       </VStack>
 
       <Text
@@ -142,70 +145,8 @@ export const ICO = () => {
       height={"500px"}
       />
 
-      <TableContainer fontFamily="Poppins, sans-serif">
-  <Table fontFamily="Poppins, sans-serif" variant='simple'>
-    <Thead>
-      <Tr>
-        <Th>Allocation name</Th>
-        <Th>Token numbers</Th>
-        <Th>Percentage</Th>
-        <Th>Informations</Th>
-      </Tr>
-    </Thead>
-    <Tbody>
-      <Tr>
-        <Td>Reserve</Td>
-        <Td>500 000</Td>
-        <Td>5%</Td>
-        <Td>to maintain token stability</Td>
-      </Tr>
-      <Tr>
-        <Td>Marketing</Td>
-        <Td>500 000</Td>
-        <Td>5%</Td>
-        <Td>for promotional activities to enhance visibility and adoption</Td>
-      </Tr>
-      <Tr>
-        <Td>Staking</Td>
-        <Td>1 500 000</Td>
-        <Td>15%</Td>
-        <Td>for staking rewards, fostering active participation and network security</Td>
-      </Tr>
-      <Tr>
-        <Td>Pre-Sale</Td>
-        <Td>2 000 000</Td>
-        <Td>20%</Td>
-        <Td>for early supporters and contributors during the pre-sale phase</Td>
-      </Tr>
-      <Tr>
-        <Td>Team</Td>
-        <Td>1 500 000</Td>
-        <Td>15%</Td>
-        <Td>allocated for team members, with a structured release plan (25% unlocked each years)</Td>
-      </Tr>
-      <Tr>
-        <Td>Liquidity</Td>
-        <Td>1 500 000</Td>
-        <Td>15%</Td>
-        <Td>to providing liquidity, ensuring smooth trading experiences</Td>
-      </Tr>
-      <Tr>
-        <Td>Rewards</Td>
-        <Td>2 500 000</Td>
-        <Td>25%</Td>
-        <Td>to users of the mixer, encouraging engagement and utilization</Td>
-      </Tr>
-    </Tbody>
-    <Tfoot>
-    <Tr>
-      <Th>Total</Th>
-      <Th>10 000 000</Th>
-      <Th>100%</Th>
-      <Th></Th>
-    </Tr>
-    </Tfoot>
-  </Table>
-</TableContainer>
+      <TokenomicsTab/>
+
 </HStack>
       <HomeSectionTitle title="Fees Allocation" />
 
@@ -219,46 +160,8 @@ export const ICO = () => {
         height={"400px"}
         />
 
-      <TableContainer fontFamily="Poppins, sans-serif">
-      <Table variant='simple'>
-      <Thead>
-      <Tr>
-        <Th>Allocation name</Th>
-        <Th>Token numbers</Th>
-        <Th>Percentage</Th>
-        <Th>Informations</Th>
-      </Tr>
-      </Thead>
-      <Tbody>
-      <Tr>
-        <Td>Burn</Td>
-        <Td>6</Td>
-        <Td>5%</Td>
-        <Td>contributing to the overall scarcity and value appreciation of our token</Td>
-      </Tr>
-      <Tr>
-        <Td>Staking</Td>
-        <Td>24</Td>
-        <Td>20%</Td>
-        <Td>encouraging active participation and loyalty within our community</Td>
-      </Tr>
-      <Tr>
-        <Td>Team</Td>
-        <Td>90</Td>
-        <Td>75%</Td>
-        <Td>ensuring continuous improvement, innovation, and the delivery of exceptional services</Td>
-      </Tr>
-      </Tbody>
-      <Tfoot>
-      <Tr>
-        <Th>Total</Th>
-        <Th>120</Th>
-        <Th>100%</Th>
-        <Th></Th>
-      </Tr>
-    </Tfoot>
-      </Table>
-      </TableContainer>
+        <FeesTab/>
+
       </HStack>
     </VStack>
     </Box>

@@ -6,13 +6,13 @@ import { Buymix } from 'artifacts/ts'
 import { mixicoconfig } from './utils'
 
 export const topupmix = async (
-    signerProvider: SignerProvider,                  // Signed Amount
+    signerProvider: SignerProvider,                                // Signed Amount
     amount: string,                                                               
   ): Promise<ExecuteScriptResult> => {
     return await Addmix.execute(signerProvider, {
       initialFields: {
-        contract: mixicoconfig.MixIcoId,             // The contract
-        amount: BigInt(amount)                       // The amount
+        contract: mixicoconfig.MixIcoId,                           // The contract
+        amount: BigInt(amount)                                     // The amount
       },
       attoAlphAmount: DUST_AMOUNT,
       tokens: [{id: mixicoconfig.mixtoken, amount: amount}]        // Asset in Wallet
@@ -44,7 +44,21 @@ export const topupmix = async (
         contract: mixicoconfig.MixIcoId
       },
       attoAlphAmount: DUST_AMOUNT,
-                                                    // Notice no Asset required here. Means the user doesn't require $PACA.
+                                                    
+    })
+  }
+
+  export const destroycontract = async (
+    signerProvider: SignerProvider,
+    amount: string,
+    tokenId: string
+  ): Promise<ExecuteScriptResult> => {
+    return await DestroyMix.execute(signerProvider, {
+      initialFields: {
+        contract: mixicoconfig.MixIcoId
+      },
+      attoAlphAmount: DUST_AMOUNT,
+                                                    
     })
   }
   

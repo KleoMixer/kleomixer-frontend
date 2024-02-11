@@ -17,7 +17,7 @@ export const Footer = () => {
         textAlign="center"
         alignItems="center"
       >
-        <Box>KleoMixer (v0.0.71)</Box>
+        <Box>KleoMixer (v0.0.75)</Box>
 
         <Box fontSize="xs" fontWeight="bold">
           <Text

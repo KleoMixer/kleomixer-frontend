@@ -32,15 +32,17 @@ Contract Mixico (
     @using(preapprovedAssets = true, assetsInContract = true, updateFields = true, checkExternalCaller = false)
     pub fn buymix(amount: U256) -> () {
 
-        //let unitcost = 1250000000000
+        // 4 months 1718119959000
 
-        //let unitcost = 125000000 // per 0.00000001
+        // 8 months 1728660869000
+
+        // 12 months 1739288138000
 
         let finalcost = amount * pricemix
 
-        transferToken!(callerAddress!(), selfAddress!(), ALPH, finalcost)             // Get Payment
+        transferToken!(callerAddress!(), selfAddress!(), ALPH, finalcost)                                         // Get Payment
 
-        transferToken!(selfAddress!(), callerAddress!(), getTokenId(), amount)        // Send Tokens 
+        transferToken!(selfAddress!(), callerAddress!(), getTokenId(), amount)                                    // Send Tokens 
 
         alphbalance = alphbalance + finalcost
 
