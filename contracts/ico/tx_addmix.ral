@@ -1,8 +1,0 @@
-TxScript Addmix (
-    contract: Mixico,
-    amount: U256
-) {
-    let token = contract.getTokenId()
-
-    contract.addmix{callerAddress!() -> token: amount}(amount)
-}

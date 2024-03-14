@@ -1,5 +1,0 @@
-TxScript Withdrawalph (
-    contract: Mixico
-) {
-    contract.removealph()
-}

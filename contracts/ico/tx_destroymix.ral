@@ -1,5 +1,0 @@
-TxScript DestroyMix (
-    contract: Mixico
-) {
-    contract.destroycontract()
-}
