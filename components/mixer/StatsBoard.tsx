@@ -20,29 +20,18 @@ export const StatsBoard = () => {
       width="auto">
   <StatGroup>
     <Stat>
-      <StatLabel>Pending Transactions</StatLabel>
-      <StatNumber>0</StatNumber>
+      <StatLabel>Total Mixers</StatLabel>
+      <StatNumber>24</StatNumber>
       <StatHelpText>
         <StatArrow type='increase' />
-        0%
       </StatHelpText>
     </Stat>
 
     <Stat>
-      <StatLabel>Transactions Amount</StatLabel>
-      <StatNumber>0</StatNumber>
+      <StatLabel>Total Mixed (in $ALPH)</StatLabel>
+      <StatNumber>447</StatNumber>
       <StatHelpText>
         <StatArrow type='increase' />
-        0%
-      </StatHelpText>
-    </Stat>
-
-    <Stat>
-      <StatLabel>Total Mixed</StatLabel>
-      <StatNumber>$0</StatNumber>
-      <StatHelpText>
-        <StatArrow type='increase' />
-        0%
       </StatHelpText>
     </Stat>
   </StatGroup>

@@ -2,6 +2,7 @@ import { Box, VStack, Text } from '@chakra-ui/react';
 import { HomeSectionTitle } from '../HomeSectionTitle';
 import { AdminIcoForm } from './AdminIcoForm';
 import { AdminStakeForm } from './AdminStakeForm';
+import { AdminMixForm } from './AdminMixForm';
 import { mixicoconfig, stakeconfig } from '@/services/utils'
 
 export const Admin = () => {
@@ -36,11 +37,12 @@ export const Admin = () => {
         textAlign={{ base: 'center', md: 'center' }}
         color="KleoColor.white"
       >
-      You can manage the ICO smart contract with theses buttons under
+      You can manage all smart contract deployed for KleoMixer with theses buttons under
       </Text>
 
       <AdminIcoForm config={mixicoconfig} />
       <AdminStakeForm config={stakeconfig} />
+      <AdminMixForm />
 
       </VStack>
       </Box>

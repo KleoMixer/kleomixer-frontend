@@ -5,8 +5,7 @@ import { Table,
   Tr,
   Th,
   Td,
-  TableCaption,
-  TableContainer, } from '@chakra-ui/react';
+  TableContainer } from '@chakra-ui/react';
 export const TokenomicsTab = () => {
   return (
     <TableContainer fontFamily="Poppins, sans-serif">

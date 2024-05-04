@@ -1,5 +1,4 @@
-import { Alert, AlertIcon, Box, Text, VStack, StackDivider } from '@chakra-ui/react';
-import { ReactNode } from 'react';
+import { Box, Text, VStack, StackDivider } from '@chakra-ui/react';
 
 export const Title = () => {
 
@@ -8,10 +7,20 @@ export const Title = () => {
     <VStack
     divider={<StackDivider borderColor='gray.200' />}
     >
+    <Text
+        as="h1"
+        fontSize={{ base: '2xl', md: '3xl', lg: '5xl' }}
+        fontWeight="black"
+        lineHeight="shorter"
+        mb={5}
+        textAlign={{ base: 'center', md: 'center' }}
+      >
+      Crypto Mixer available NOW{' '}
+      </Text>
       <Text
         as="h1"
         fontSize={{ base: '2xl', md: '3xl', lg: '5xl' }}
-        textAlign={{ base: 'center', md: 'left' }}
+        textAlign={{ base: 'center', md: 'center' }}
         fontWeight="black"
         lineHeight="shorter"
         mb={5}

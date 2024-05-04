@@ -1,4 +1,4 @@
-import { Box, Tooltip, HStack, VStack, Text } from '@chakra-ui/react';
+import { Box, Tooltip, AlertIcon, Alert, HStack, VStack, Text } from '@chakra-ui/react';
 import { HomeSectionTitle } from '../HomeSectionTitle';
 import { StakeForm } from './StakeForm';
 import { InfoOutlineIcon } from '@chakra-ui/icons'
@@ -13,6 +13,10 @@ export const Stake = () => {
       <VStack
       spacing={2}
       >
+      <Alert width='auto' status='warning'>
+           <AlertIcon />
+               A new version of the staking is in preparation
+      </Alert>
       <StakeBoard/>
       <HStack>
       <Text

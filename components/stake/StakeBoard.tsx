@@ -2,8 +2,6 @@ import { Box, Stat, StatLabel, StatNumber, StatHelpText, StatArrow, StatGroup, u
 
 export const StakeBoard = () => {
 
-  const isContentCentered = useBreakpointValue({ base: true, md: false });
-
   return (
     <Box
       display="flex"
@@ -23,7 +21,7 @@ export const StakeBoard = () => {
   <StatGroup>
     <Stat>
       <StatLabel>Rewards Delivered</StatLabel>
-      <StatNumber>124045</StatNumber>
+      <StatNumber>131990</StatNumber>
       <StatHelpText>
         <StatArrow type='increase' />
 
@@ -32,7 +30,7 @@ export const StakeBoard = () => {
 
     <Stat>
       <StatLabel>Total Staked</StatLabel>
-      <StatNumber>523881</StatNumber>
+      <StatNumber>568984</StatNumber>
       <StatHelpText>
         <StatArrow type='increase' />
 
@@ -41,7 +39,7 @@ export const StakeBoard = () => {
 
     <Stat>
       <StatLabel>Total Stakers</StatLabel>
-      <StatNumber>33</StatNumber>
+      <StatNumber>43</StatNumber>
       <StatHelpText>
         <StatArrow type='increase' />
 

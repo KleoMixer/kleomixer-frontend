@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
-import { Box, Button, useBreakpointValue } from '@chakra-ui/react';
+import { Box, Badge, useBreakpointValue } from '@chakra-ui/react';
 import { useCallback, FC } from 'react';
 import { ActionButton } from './ActionButton';
+import { CustomWalletConnectButton } from './CustomWalletConnectButton';
 import { Authenticated } from './core/Authenticated';
-import { AlephiumConnectButton } from '@alephium/web3-react';
 import { SocialMediaIcons } from './main/SocialMediaIcons';
 
 interface HeaderMenuButtonsProps {
@@ -15,13 +15,12 @@ export const HeaderMenuButtons: FC<HeaderMenuButtonsProps> = ({ enabled }) => {
 
   const isContentCentered = useBreakpointValue({ base: true, md: false });
 
-  const handleMixerClick = useCallback(() => {
-    router.push('/mixer');
-  }, [router]);
-
-
     const handleStakeClick = useCallback(() => {
       router.push('/stake');
+    }, [router]);
+
+    const handleMixerClick = useCallback(() => {
+      router.push('/mixer');
     }, [router]);
 
   const handleDocsClick = useCallback(() => {
@@ -45,7 +44,7 @@ export const HeaderMenuButtons: FC<HeaderMenuButtonsProps> = ({ enabled }) => {
 
     <SocialMediaIcons />
       {enabled.includes('mixer') && (
-        <ActionButton onClick={handleMixerClick}>Mixer</ActionButton>
+        <ActionButton onClick={handleMixerClick}><Badge ml='1' colorScheme='purple'>Updated</Badge> Mixer</ActionButton>
       )}
       {enabled.includes('stake') && (
         <ActionButton onClick={handleStakeClick}>Stake</ActionButton>
@@ -55,10 +54,10 @@ export const HeaderMenuButtons: FC<HeaderMenuButtonsProps> = ({ enabled }) => {
       )}
 
       <Authenticated
-        fallback={<AlephiumConnectButton />}
+        fallback={<CustomWalletConnectButton />}
         spinnerCentered={isContentCentered}
       >
-      <AlephiumConnectButton />
+      <CustomWalletConnectButton />
       </Authenticated>
     </Box>
   );

@@ -1,20 +1,9 @@
-import { Box, HStack, VStack, Text, Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-  TableContainer, } from '@chakra-ui/react';
-import { Timer } from './Timer';
+import { Box, HStack, VStack, Text } from '@chakra-ui/react';
 import { Chart } from "react-google-charts";
 import { HomeSectionTitle } from '../HomeSectionTitle';
-import { BuyForm } from './BuyForm';
 import { FeesTab } from './FeesTab';
 import { TokenomicsTab } from './TokenomicsTab';
 import ProgressBar from "@ramonak/react-progress-bar";
-import { mixicoconfig } from '@/services/utils'
 
 export const Supplydata = [
   ["Allocation", "Percentage"],

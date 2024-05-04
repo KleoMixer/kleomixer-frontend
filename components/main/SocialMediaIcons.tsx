@@ -10,7 +10,7 @@ export const SocialMediaIcons = () => {
         style={{ width: 30, height: 30 }}
       />
       <SocialIcon
-        url="https://t.me/AnnouncementKleoMixer"
+        url="https://t.me/kleomixercommunities"
         bgColor="#fff"
         style={{ width: 30, height: 30 }}
       />

@@ -1,7 +1,6 @@
 import React, { useCallback, useRef } from 'react'
 import { useTxStatus } from '@alephium/web3-react'
 import { node } from "@alephium/web3"
-import { TransactionPendingModal } from "./core/TransactionPendingModal"
 
 interface TxStatusAlertProps {
   txId: string

@@ -1,5 +1,4 @@
 import { FC, useCallback, useState } from 'react';
-import { useRouter } from 'next/router';
 import { ActionButton } from '../ActionButton';
 import {
   NumberInput,
@@ -8,28 +7,21 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
   useBreakpointValue,
-  Text,
-  VStack,
   HStack,
-  Tooltip,
   Box,
 } from '@chakra-ui/react';
-import { InfoOutlineIcon } from '@chakra-ui/icons'
 import { Authenticated } from '../core/Authenticated';
 import { useWallet, AlephiumConnectButton } from '@alephium/web3-react';
 import { TxStatus } from '../TxStatus'
-import { Mixico } from 'artifacts/ts';
-import { node, web3, NodeProvider } from '@alephium/web3';
+import { node } from '@alephium/web3';
 import { MixIco } from '@/services/utils'
 import { buy, withdraw, topupmix, destroycontract } from '@/services/token.service'
-import { PatternFormat } from "react-number-format";
 
 
 export const AdminIcoForm: FC<{
   config: MixIco
 }> = ({ config }) => {
-  const { signer, account } = useWallet()
-  const addressGroup = config.groupIndex
+  const { signer } = useWallet()
   const [amount, setAmount] = useState(0);
   const [ongoingTxId, setOngoingTxId] = useState<string>()
 
@@ -71,9 +63,6 @@ export const AdminIcoForm: FC<{
 
     return Promise.resolve()
   }, [setOngoingTxId])
-
-
-  const router = useRouter();
 
   const isContentCentered = useBreakpointValue({ base: true, md: false });
 

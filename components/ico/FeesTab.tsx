@@ -5,8 +5,7 @@ import { Table,
   Tr,
   Th,
   Td,
-  TableCaption,
-  TableContainer, } from '@chakra-ui/react';
+  TableContainer } from '@chakra-ui/react';
 
 export const FeesTab = () => {
   return (

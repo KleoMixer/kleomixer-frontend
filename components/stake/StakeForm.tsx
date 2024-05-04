@@ -48,63 +48,20 @@ export const StakeForm: FC<{
           setOngoingTxId(result.txId)
           toast({
           title: 'Transaction submitted',
-          description: <a href={`https://explorer.alephium.org/transactions/${result.txId}`} > {result.txId} </a>,
+          description: <a href={`https://explorer.alephium.org/transactions/${result.txId}`} target="_blank" rel="noopener noreferrer" > {result.txId} </a>,
           status: 'success',
           duration: 10000,
           isClosable: true,
         })
       }
   }
-
-  const handleStake9 = async () => {
-    if (signer) {
-      const result = await servicenine(signer, ""+amount*100000000)
-      setOngoingTxId(result.txId)
-      toast({
-      title: 'Transaction submitted',
-      description: <a href={`https://explorer.alephium.org/transactions/${result.txId}`} > {result.txId} </a>,
-      status: 'success',
-      duration: 10000,
-      isClosable: true,
-    })
-    }
-  }
-
-  const handleStake6 = async () => {
-    if (signer) {
-      const result = await servicesix(signer, ""+amount*100000000)
-      setOngoingTxId(result.txId)
-      toast({
-      title: 'Transaction submitted',
-      description: <a href={`https://explorer.alephium.org/transactions/${result.txId}`} > {result.txId} </a>,
-      status: 'success',
-      duration: 10000,
-      isClosable: true,
-    })
-    }
-  }
-
-  const handleStake3 = async () => {
+  const handleStake = async () => {
     if (signer) {
       const result = await servicethree(signer, ""+amount*100000000)
       setOngoingTxId(result.txId)
       toast({
       title: 'Transaction submitted',
-      description: <a href={`https://explorer.alephium.org/transactions/${result.txId}`} > {result.txId} </a>,
-      status: 'success',
-      duration: 10000,
-      isClosable: true,
-    })
-    }
-  }
-
-  const handleStake1 = async () => {
-    if (signer) {
-      const result = await serviceoneyear(signer, ""+amount*100000000)
-      setOngoingTxId(result.txId)
-      toast({
-      title: 'Transaction submitted',
-      description: <a href={`https://explorer.alephium.org/transactions/${result.txId}`} > {result.txId} </a>,
+      description: <a href={`https://explorer.alephium.org/transactions/${result.txId}`} target="_blank" rel="noopener noreferrer" > {result.txId} </a>,
       status: 'success',
       duration: 10000,
       isClosable: true,
@@ -233,7 +190,7 @@ export const StakeForm: FC<{
           spinnerCentered={isContentCentered}
         >
         <ActionButton
-          onClick={handleStake3}
+          onClick={handleStake}
           disabled={!!ongoingTxId}
         >
           {'Stake'}
@@ -248,261 +205,6 @@ export const StakeForm: FC<{
           color="KleoColor.white"
         >
         You will be able to claim {amount+(amount*0.1)} $MIX in 3 Months
-        </Text>
-        </VStack>
-      </Box>
-      </AccordionPanel>
-    </AccordionItem>
-    <AccordionItem
-      border={0}
-      borderRadius="2xl"
-      bgColor="KleoColor.dark.lighter"
-      boxShadow="0 0 25px"
-      color="KleoColor.shadowColor"
-      bgGradient="linear-gradient(90deg, KleoColor.dark.base 0%, KleoColor.dark.lighter 70%);"
-      mb={6}
-    >
-      <AccordionButton
-        _focus={{ outline: 'none' }}
-        color="KleoColor.white"
-        padding={6}
-      >
-      <Image
-        objectFit='cover'
-        boxSize='40px'
-        src='/mix.png'
-        alt='MIX'
-      />
-        <Box as="span" flex='1' textAlign='left'>
-          $MIX Staking | 6 Months | 15% APR
-        </Box>
-        <AccordionIcon />
-      </AccordionButton>
-      <AccordionPanel color="KleoColor.white">
-      <Box
-        display="flex"
-        gap={5}
-        alignItems="center"
-        justifyContent={{ base: 'center', md: 'flex-start' }}
-      >
-      <VStack>
-      <HStack>
-        <NumberInput
-          maxW="100px"
-          min={0}
-          max={10000000}
-          value={amount}
-          onChange={setAmountHandler}
-        >
-          <NumberInputField
-            py={6}
-            _focus={{ outline: 'none' }}
-            placeholder="Amount of tokens..."
-            color="KleoColor.white"
-          />
-            <NumberInputStepper>
-              <NumberIncrementStepper borderColor="KleoColor.base.dark" />
-              <NumberDecrementStepper />
-            </NumberInputStepper>
-        </NumberInput>
-        <Authenticated
-          fallback={
-            <Box
-              mt={6}
-              display="flex"
-              justifyContent={isContentCentered ? 'center' : 'flex-start'}
-            >
-              <AlephiumConnectButton />
-            </Box>
-          }
-          spinnerCentered={isContentCentered}
-        >
-        <ActionButton
-          onClick={handleStake6}
-          disabled={!!ongoingTxId}
-        >
-          {'Stake'}
-        </ActionButton>
-        </Authenticated>
-        </HStack>
-        <Text
-          as="h2"
-          fontSize="lg"
-          fontWeight="thin"
-          textAlign={{ base: 'center', md: 'center' }}
-          color="KleoColor.white"
-        >
-        You will be able to claim {amount+(amount*0.15)} $MIX in 6 Months
-        </Text>
-        </VStack>
-      </Box>
-      </AccordionPanel>
-    </AccordionItem>
-    <AccordionItem
-      border={0}
-      borderRadius="2xl"
-      bgColor="KleoColor.dark.lighter"
-      boxShadow="0 0 25px"
-      color="KleoColor.shadowColor"
-      bgGradient="linear-gradient(90deg, KleoColor.dark.base 0%, KleoColor.dark.lighter 70%);"
-      mb={6}
-    >
-      <AccordionButton
-        _focus={{ outline: 'none' }}
-        color="KleoColor.white"
-        padding={6}
-      >
-      <Image
-        objectFit='cover'
-        boxSize='40px'
-        src='/mix.png'
-        alt='MIX'
-      />
-        <Box as="span" flex='1' textAlign='left'>
-          $MIX Staking | 9 Months | 20% APR
-        </Box>
-        <AccordionIcon />
-      </AccordionButton>
-      <AccordionPanel color="KleoColor.white">
-      <Box
-        display="flex"
-        gap={5}
-        alignItems="center"
-        justifyContent={{ base: 'center', md: 'flex-start' }}
-      >
-      <VStack>
-      <HStack>
-        <NumberInput
-          maxW="100px"
-          min={0}
-          max={10000000}
-          value={amount}
-          onChange={setAmountHandler}
-        >
-          <NumberInputField
-            py={6}
-            _focus={{ outline: 'none' }}
-            placeholder="Amount of tokens..."
-            color="KleoColor.white"
-          />
-            <NumberInputStepper>
-              <NumberIncrementStepper borderColor="KleoColor.base.dark" />
-              <NumberDecrementStepper />
-            </NumberInputStepper>
-        </NumberInput>
-        <Authenticated
-          fallback={
-            <Box
-              mt={6}
-              display="flex"
-              justifyContent={isContentCentered ? 'center' : 'flex-start'}
-            >
-              <AlephiumConnectButton />
-            </Box>
-          }
-          spinnerCentered={isContentCentered}
-        >
-        <ActionButton
-          onClick={handleStake9}
-          disabled={!!ongoingTxId}
-        >
-          {'Stake'}
-        </ActionButton>
-        </Authenticated>
-        </HStack>
-        <Text
-          as="h2"
-          fontSize="lg"
-          fontWeight="thin"
-          textAlign={{ base: 'center', md: 'center' }}
-          color="KleoColor.white"
-        >
-        You will be able to claim {amount+(amount*0.2)} $MIX in 9 Months
-        </Text>
-        </VStack>
-      </Box>
-      </AccordionPanel>
-    </AccordionItem>
-    <AccordionItem
-      border={0}
-      borderRadius="2xl"
-      bgColor="KleoColor.dark.lighter"
-      boxShadow="0 0 25px"
-      color="KleoColor.shadowColor"
-      bgGradient="linear-gradient(90deg, KleoColor.dark.base 0%, KleoColor.dark.lighter 70%);"
-      mb={6}
-    >
-      <AccordionButton
-        _focus={{ outline: 'none' }}
-        color="KleoColor.white"
-        padding={6}
-      >
-      <Image
-        objectFit='cover'
-        boxSize='40px'
-        src='/mix.png'
-        alt='MIX'
-      />
-        <Box as="span" flex='1' textAlign='left'>
-          $MIX Staking | 1 Year | 40% APR
-        </Box>
-        <AccordionIcon />
-      </AccordionButton>
-      <AccordionPanel color="KleoColor.white">
-      <Box
-        display="flex"
-        gap={5}
-        alignItems="center"
-        justifyContent={{ base: 'center', md: 'flex-start' }}
-      >
-      <VStack>
-      <HStack>
-        <NumberInput
-          maxW="100px"
-          min={0}
-          max={10000000}
-          value={amount}
-          onChange={setAmountHandler}
-        >
-          <NumberInputField
-            py={6}
-            _focus={{ outline: 'none' }}
-            placeholder="Amount of tokens..."
-            color="KleoColor.white"
-          />
-            <NumberInputStepper>
-              <NumberIncrementStepper borderColor="KleoColor.base.dark" />
-              <NumberDecrementStepper />
-            </NumberInputStepper>
-        </NumberInput>
-        <Authenticated
-          fallback={
-            <Box
-              mt={6}
-              display="flex"
-              justifyContent={isContentCentered ? 'center' : 'flex-start'}
-            >
-              <AlephiumConnectButton />
-            </Box>
-          }
-          spinnerCentered={isContentCentered}
-        >
-        <ActionButton
-          onClick={handleStake1}
-          disabled={!!ongoingTxId}
-        >
-          {'Stake'}
-        </ActionButton>
-        </Authenticated>
-        </HStack>
-        <Text
-          as="h2"
-          fontSize="lg"
-          fontWeight="thin"
-          textAlign={{ base: 'center', md: 'center' }}
-          color="KleoColor.white"
-        >
-        You will be able to claim {amount+(amount*0.4)} $MIX in 1 Year
         </Text>
         </VStack>
       </Box>

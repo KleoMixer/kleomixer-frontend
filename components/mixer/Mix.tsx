@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Box, Alert, AlertIcon, VStack, SimpleGrid, Text, Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
+import { useState } from 'react';
+import { Box, Image, Alert, HStack, Input, NumberInput, AlertIcon, VStack, SimpleGrid, Text, Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import { DepositForm } from './DepositForm';
 import { WithdrawForm } from './WithdrawForm';
-import { RegisterForm } from './RegisterForm';
-import { CryptoChooser } from './CryptoChooser';
+import { PasswordGenerator } from './PasswordGenerator';
+import { HomeSectionTitle } from '../HomeSectionTitle';
 import { StatsBoard } from './StatsBoard';
 
 // TODO: Prepare separate components for the segments here
@@ -16,27 +17,22 @@ export const Mix = () => {
     <VStack
   spacing={2}
   >
-      <Text
-        as="h1"
-        fontSize={{ base: '2xl', md: '3xl', lg: '5xl' }}
-        textAlign={{ base: 'center', md: 'center' }}
-        fontWeight="black"
-        lineHeight="shorter"
-        mb={5}
-      >
-        Mixer not available for now
-      </Text>
+    <HomeSectionTitle title="Mixer" />
 
       <Alert width='auto' status='info'>
            <AlertIcon />
-               120 $MIX will be taken as fees when you deposit any crypto
+               Only $ALPH is available for now
       </Alert>
-
+      <Alert width='auto' status='info'>
+           <AlertIcon />
+               10 $MIX will be taken as fees when you deposit
+      </Alert>
       <Alert width='auto' status='warning'>
            <AlertIcon />
                you can read our documentations to understand how the mixer work
       </Alert>
 
+      <StatsBoard/>
     </VStack>
     <VStack spacing={8}>
         <Box mt={6}>
@@ -58,8 +54,8 @@ export const Mix = () => {
           width="auto">
           <>
                   <Tabs
-                    bgColor="transparent"
                     isFitted
+                    bgColor="transparent"
                     rounded="xl"
                     fontWeight="normal"
                     color="KleoColor.white"
@@ -82,24 +78,18 @@ export const Mix = () => {
                     </TabList>
                   <TabPanels>
                     <TabPanel>
-                      <SimpleGrid columns={{sm:2, md:2}} spacing='40px'>
-                        <CryptoChooser/>
                         <DepositForm/>
-                      </SimpleGrid>
                     </TabPanel>
                     <TabPanel>
-                      <SimpleGrid columns={{sm:2, md:2}} spacing='40px'>
-                        <CryptoChooser/>
                         <WithdrawForm/>
-                      </SimpleGrid>
                     </TabPanel>
                   </TabPanels>
                   </Tabs>
                 </>
           </Box>
         </Box>
-        <StatsBoard/>
-        </VStack>
+            <PasswordGenerator/>
+            </VStack>
     </Box>
   );
 };

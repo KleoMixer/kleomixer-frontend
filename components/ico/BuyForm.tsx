@@ -1,5 +1,4 @@
 import { FC, useCallback, useState } from 'react';
-import { useRouter } from 'next/router';
 import { ActionButton } from '../ActionButton';
 import {
   NumberInput,
@@ -8,28 +7,24 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
   useBreakpointValue,
-  Text,
   VStack,
+  Text,
   HStack,
-  Tooltip,
   Box,
 } from '@chakra-ui/react';
-import { InfoOutlineIcon } from '@chakra-ui/icons'
 import { Authenticated } from '../core/Authenticated';
 import { useWallet, AlephiumConnectButton } from '@alephium/web3-react';
 import { TxStatus } from '../TxStatus'
-import { Mixico } from 'artifacts/ts';
-import { node, web3, NodeProvider } from '@alephium/web3';
+import { node } from '@alephium/web3';
 import { MixIco } from '@/services/utils'
-import { buy, withdraw, topupmix, destroycontract } from '@/services/token.service'
+import { buy } from '@/services/token.service'
 import { PatternFormat } from "react-number-format";
 
 
 export const BuyForm: FC<{
   config: MixIco
 }> = ({ config }) => {
-  const { signer, account } = useWallet()
-  const addressGroup = config.groupIndex
+  const { signer } = useWallet()
   const [amount, setAmount] = useState(80);
   const [ongoingTxId, setOngoingTxId] = useState<string>()
 
@@ -39,41 +34,6 @@ export const BuyForm: FC<{
       setOngoingTxId(result.txId)
     }
   }
-
-  const handleWithdrawSubmit = async () => {
-    if (signer) {
-      const result = await withdraw(signer, ""+amount*100000000, "yweuj67dNGcVu81BEXfdSs2yTDJ2gJBQPwkDbgksCUyD")
-      setOngoingTxId(result.txId)
-    }
-  }
-
-  const handleDestroySubmit = async () => {
-    if (signer) {
-      const result = await destroycontract(signer, ""+amount*100000000, "yweuj67dNGcVu81BEXfdSs2yTDJ2gJBQPwkDbgksCUyD")
-      setOngoingTxId(result.txId)
-    }
-  }
-
-  const handleTopUpSubmit = async () => {
-    if (signer) {
-      const result = await topupmix(signer, ""+amount*100000000)
-      setOngoingTxId(result.txId)
-    }
-  }
-
-  const txStatusCallback = useCallback(async (status: node.TxStatus, numberOfChecks: number): Promise<any> => {
-    if (
-      (status.type === 'Confirmed' && numberOfChecks > 2) ||
-      (status.type === 'TxNotFound' && numberOfChecks > 3)
-    ) {
-      setOngoingTxId(undefined)
-    }
-
-    return Promise.resolve()
-  }, [setOngoingTxId])
-
-
-  const router = useRouter();
 
   const isContentCentered = useBreakpointValue({ base: true, md: false });
 
